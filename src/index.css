@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Ensure smooth transitions for theme-specific elements */
+.dark * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Force theme application to all elements */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Ensure all components respect theme changes */
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom styles for the dashboard */
+.sidebar-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.employee-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.team-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #bbf7d0;
+}
+
+.green-gradient {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+}
+
+/* Dark theme card hover effects */
+.dark .assessment-card:hover,
+.dark .candidate-card:hover,
+.dark .employee-card:hover {
+  background-color: #2d3748; /* gray-800 equivalent, darker than gray-700 */
+}
+
+/* Override white click states for dark theme */
+.dark .assessment-card:active,
+.dark .assessment-card:focus,
+.dark .assessment-card:focus-visible,
+.dark .candidate-card:active,
+.dark .candidate-card:focus,
+.dark .candidate-card:focus-visible,
+.dark .employee-card:active,
+.dark .employee-card:focus,
+.dark .employee-card:focus-visible {
+  background-color: #2d3748 !important; /* gray-800 equivalent */
+  outline: none;
+}
+
+.dark .assessment-card:active,
+.dark .candidate-card:active,
+.dark .employee-card:active {
+  background-color: #374151 !important; /* gray-700 - slightly lighter for active state */
+}
+
+/* Sidebar navigation dark theme overrides */
+.dark .sidebar-nav-item:hover {
+  background-color: #2d3748 !important; /* gray-800 equivalent, darker than gray-700 */
+}
+
+.dark .sidebar-nav-item:active,
+.dark .sidebar-nav-item:focus,
+.dark .sidebar-nav-item:focus-visible {
+  background-color: #2d3748 !important; /* gray-800 equivalent */
+  outline: none;
+}
+
+.dark .sidebar-nav-item:active {
+  background-color: #374151 !important; /* gray-700 - slightly lighter for active state */
+}
+
+/* Override DaisyUI button active states in dark theme */
+.dark .btn:active,
+.dark .btn:focus,
+.dark .btn:focus-visible {
+  outline: none;
+}
+
+.dark .btn-outline:active {
+  background-color: transparent !important;
+}
+
+.dark .btn-primary:active {
+  background-color: #16a34a !important; /* primary-600 */
+}
+
+.dark .btn-secondary:active {
+  background-color: #6b7280 !important; /* gray-500 */
+}
+
+/* Table row dark theme overrides */
+.dark tr:hover {
+  background-color: #2d3748 !important; /* gray-800 equivalent */
+}
+
+.dark tr:active,
+.dark tr:focus,
+.dark tr:focus-visible {
+  background-color: #2d3748 !important; /* gray-800 equivalent */
+  outline: none;
+}
+
+.dark tr:active {
+  background-color: #374151 !important; /* gray-700 - slightly lighter for active state */
+}
