@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for better UX */
+.kanban-column {
+  min-height: 400px;
+}
+
+.virtualized-list {
+  height: 600px;
+}
+
+/* Drag and drop styles */
+.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.drag-overlay {
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px dashed #3b82f6;
+}
+
+/* Assessment form styles */
+.assessment-question {
+  @apply p-4 border border-base-300 rounded-lg mb-4;
+}
+
+.conditional-question {
+  @apply bg-blue-50 border-blue-200;
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-base-300 rounded;
+}
