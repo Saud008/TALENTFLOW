@@ -8,31 +8,53 @@ const CandidatesPage = () => {
   const [selectedStage, setSelectedStage] = useState('All')
   const [candidates, setCandidates] = useState([])
   const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pagination, setPagination] = useState({})
+  const [filters, setFilters] = useState({})
   const navigate = useNavigate()
   const { addToast } = useToast()
 
   useEffect(() => {
     loadCandidates()
-  }, [])
+  }, [currentPage, filters])
 
   const loadCandidates = () => {
-    const candidatesData = dataService.getCandidates()
-    setCandidates(candidatesData)
+    setLoading(true)
+    const result = dataService.getCandidates(currentPage, 20, filters)
+    setCandidates(result.candidates)
+    setPagination({
+      totalCount: result.totalCount,
+      currentPage: result.currentPage,
+      totalPages: result.totalPages,
+      hasNextPage: result.hasNextPage,
+      hasPrevPage: result.hasPrevPage
+    })
     setLoading(false)
   }
 
-  const stages = ['All', 'Applied', 'Interview', 'Hired']
+  const handleFilterChange = () => {
+    const newFilters = {}
+    if (selectedStage !== 'All') {
+      newFilters.stage = selectedStage
+    }
+    if (searchTerm.trim()) {
+      newFilters.job = searchTerm
+    }
+    setFilters(newFilters)
+    setCurrentPage(1)
+  }
 
-  // Filter candidates based on search term and stage
-  const filteredCandidates = candidates.filter(candidate => {
-    const matchesSearch = candidate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         candidate.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         candidate.appliedJob.toLowerCase().includes(searchTerm.toLowerCase())
-    
-    const matchesStage = selectedStage === 'All' || candidate.stage === selectedStage
-    
-    return matchesSearch && matchesStage
-  })
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      handleFilterChange()
+    }, 300)
+    return () => clearTimeout(timeoutId)
+  }, [searchTerm, selectedStage])
+
+  const stages = ['All', 'Screening', 'Interview', 'Offer', 'Hired', 'Archived']
+
+  // Candidates are already filtered by the backend
+  const filteredCandidates = candidates
 
   const getStageBadge = (stage) => {
     switch (stage) {
@@ -150,12 +172,18 @@ const CandidatesPage = () => {
             {/* Action Buttons */}
             <div className="mt-4 flex space-x-2">
               <button 
-                onClick={() => navigate(`/candidates/${candidate.id}`)}
+                onClick={() => navigate(`/admin/candidates/${candidate.id}`)}
                 className="btn btn-sm btn-outline btn-primary flex-1"
               >
                 View Profile
               </button>
-              <button className="btn btn-sm btn-outline btn-secondary flex-1">
+              <button 
+                onClick={() => {
+                  window.location.href = `mailto:${candidate.email}?subject=Regarding your application for ${candidate.appliedJob}&body=Dear ${candidate.name},%0D%0A%0D%0AThank you for your interest in the ${candidate.appliedJob} position.%0D%0A%0D%0ABest regards,%0D%0ASaud Masaud%0D%0ATalentFlow Team`
+                  addToast('Opening email client...', 'info')
+                }}
+                className="btn btn-sm btn-outline btn-primary flex-1"
+              >
                 Contact
               </button>
             </div>
@@ -188,10 +216,56 @@ const CandidatesPage = () => {
         </div>
       )}
 
-      {/* Results Count */}
+      {/* Results Count and Pagination */}
       {filteredCandidates.length > 0 && (
-        <div className="mt-6 text-sm text-gray-600 dark:text-gray-400">
-          Showing {filteredCandidates.length} of {candidates.length} candidates
+        <div className="mt-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              Showing {((pagination.currentPage - 1) * 20) + 1} to {Math.min(pagination.currentPage * 20, pagination.totalCount)} of {pagination.totalCount} candidates
+            </div>
+            
+            {/* Pagination Controls */}
+            {pagination.totalPages > 1 && (
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  disabled={!pagination.hasPrevPage}
+                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Previous
+                </button>
+                
+                <div className="flex items-center space-x-1">
+                  {[...Array(Math.min(5, pagination.totalPages))].map((_, index) => {
+                    const pageNumber = Math.max(1, pagination.currentPage - 2) + index
+                    if (pageNumber > pagination.totalPages) return null
+                    
+                    return (
+                      <button
+                        key={pageNumber}
+                        onClick={() => setCurrentPage(pageNumber)}
+                        className={`px-3 py-1 text-sm border rounded-md ${
+                          pageNumber === pagination.currentPage
+                            ? 'bg-blue-600 text-white border-blue-600'
+                            : 'border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        }`}
+                      >
+                        {pageNumber}
+                      </button>
+                    )
+                  })}
+                </div>
+                
+                <button
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  disabled={!pagination.hasNextPage}
+                  className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Next
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

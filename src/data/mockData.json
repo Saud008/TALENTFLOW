@@ -1,0 +1,303 @@
+{
+  "jobs": [
+    { "id": 1, "title": "Software Engineer", "status": "Archived", "department": "Technology", "location": "Bangalore", "type": "Full-time", "experience": "2-4 years", "salary": "₹8-12 LPA" },
+    { "id": 2, "title": "Frontend Developer", "status": "Active", "department": "Technology", "location": "Mumbai", "type": "Full-time", "experience": "1-3 years", "salary": "₹6-10 LPA" },
+    { "id": 3, "title": "Backend Developer", "status": "Active", "department": "Technology", "location": "Delhi", "type": "Full-time", "experience": "2-5 years", "salary": "₹7-12 LPA" },
+    { "id": 4, "title": "Data Analyst", "status": "Archived", "department": "Analytics", "location": "Hyderabad", "type": "Full-time", "experience": "1-3 years", "salary": "₹5-8 LPA" },
+    { "id": 5, "title": "UI/UX Designer", "status": "Archived", "department": "Design", "location": "Pune", "type": "Full-time", "experience": "2-4 years", "salary": "₹6-9 LPA" },
+    { "id": 6, "title": "Product Manager", "status": "Archived", "department": "Product", "location": "Bangalore", "type": "Full-time", "experience": "3-6 years", "salary": "₹12-18 LPA" },
+    { "id": 7, "title": "HR Specialist", "status": "Active", "department": "HR", "location": "Mumbai", "type": "Full-time", "experience": "2-4 years", "salary": "₹4-7 LPA" },
+    { "id": 8, "title": "Mobile App Developer", "status": "Active", "department": "Technology", "location": "Chennai", "type": "Full-time", "experience": "1-4 years", "salary": "₹6-11 LPA" },
+    { "id": 9, "title": "QA Tester", "status": "Archived", "department": "Technology", "location": "Bangalore", "type": "Full-time", "experience": "1-3 years", "salary": "₹4-7 LPA" },
+    { "id": 10, "title": "Machine Learning Engineer", "status": "Active", "department": "Technology", "location": "Bangalore", "type": "Full-time", "experience": "2-5 years", "salary": "₹10-16 LPA" },
+    { "id": 11, "title": "Content Writer", "status": "Archived", "department": "Marketing", "location": "Delhi", "type": "Full-time", "experience": "1-3 years", "salary": "₹3-6 LPA" },
+    { "id": 12, "title": "Cybersecurity Analyst", "status": "Archived", "department": "Technology", "location": "Mumbai", "type": "Full-time", "experience": "2-5 years", "salary": "₹8-14 LPA" },
+    { "id": 13, "title": "Cloud Engineer", "status": "Active", "department": "Technology", "location": "Hyderabad", "type": "Full-time", "experience": "2-4 years", "salary": "₹9-15 LPA" },
+    { "id": 14, "title": "Business Analyst", "status": "Active", "department": "Analytics", "location": "Pune", "type": "Full-time", "experience": "2-4 years", "salary": "₹6-10 LPA" },
+    { "id": 15, "title": "Sales Associate", "status": "Archived", "department": "Sales", "location": "Mumbai", "type": "Full-time", "experience": "0-2 years", "salary": "₹3-5 LPA" },
+    { "id": 16, "title": "Database Administrator", "status": "Archived", "department": "Technology", "location": "Bangalore", "type": "Full-time", "experience": "2-5 years", "salary": "₹7-12 LPA" },
+    { "id": 17, "title": "Technical Support", "status": "Active", "department": "Technology", "location": "Chennai", "type": "Full-time", "experience": "1-3 years", "salary": "₹3-6 LPA" },
+    { "id": 18, "title": "DevOps Engineer", "status": "Archived", "department": "Technology", "location": "Bangalore", "type": "Full-time", "experience": "2-5 years", "salary": "₹8-14 LPA" },
+    { "id": 19, "title": "Marketing Executive", "status": "Archived", "department": "Marketing", "location": "Delhi", "type": "Full-time", "experience": "1-3 years", "salary": "₹4-7 LPA" },
+    { "id": 20, "title": "Finance Analyst", "status": "Archived", "department": "Finance", "location": "Mumbai", "type": "Full-time", "experience": "1-4 years", "salary": "₹5-9 LPA" },
+    { "id": 21, "title": "Customer Success Manager", "status": "Archived", "department": "Customer Success", "location": "Pune", "type": "Full-time", "experience": "2-4 years", "salary": "₹6-10 LPA" },
+    { "id": 22, "title": "Operations Manager", "status": "Active", "department": "Operations", "location": "Hyderabad", "type": "Full-time", "experience": "3-6 years", "salary": "₹8-14 LPA" },
+    { "id": 23, "title": "Graphic Designer", "status": "Archived", "department": "Design", "location": "Mumbai", "type": "Full-time", "experience": "1-3 years", "salary": "₹4-7 LPA" },
+    { "id": 24, "title": "SEO Specialist", "status": "Archived", "department": "Marketing", "location": "Delhi", "type": "Full-time", "experience": "1-3 years", "salary": "₹3-6 LPA" },
+    { "id": 25, "title": "Project Manager", "status": "Archived", "department": "Management", "location": "Bangalore", "type": "Full-time", "experience": "3-7 years", "salary": "₹10-16 LPA" }
+  ],
+  "candidates": [
+    { "id": 1, "name": "Dipti Chauhan", "email": "dipti.chauhan@email.com", "phone": "+91 98765 43210", "appliedJob": "Operations Manager", "stage": "Screening", "experience": 4, "location": "Mumbai", "skills": ["Operations", "Management"], "resumeScore": 82, "appliedDate": "2024-01-15" },
+    { "id": 2, "name": "Priya Raina", "email": "priya.raina@email.com", "phone": "+91 98765 43211", "appliedJob": "DevOps Engineer", "stage": "Hired", "experience": 3, "location": "Bangalore", "skills": ["DevOps", "AWS", "Docker"], "resumeScore": 91, "appliedDate": "2024-01-10" },
+    { "id": 3, "name": "Naman Sinha", "email": "naman.sinha@email.com", "phone": "+91 98765 43212", "appliedJob": "Backend Developer", "stage": "Offer", "experience": 2, "location": "Delhi", "skills": ["Node.js", "Python", "MongoDB"], "resumeScore": 88, "appliedDate": "2024-01-12" },
+    { "id": 4, "name": "Chirag Deshmukh", "email": "chirag.deshmukh@email.com", "phone": "+91 98765 43213", "appliedJob": "Data Analyst", "stage": "Screening", "experience": 2, "location": "Pune", "skills": ["Python", "SQL", "Tableau"], "resumeScore": 76, "appliedDate": "2024-01-18" },
+    { "id": 5, "name": "Swati Rajput", "email": "swati.rajput@email.com", "phone": "+91 98765 43214", "appliedJob": "Database Administrator", "stage": "Hired", "experience": 4, "location": "Hyderabad", "skills": ["MySQL", "PostgreSQL", "Oracle"], "resumeScore": 89, "appliedDate": "2024-01-08" },
+    { "id": 6, "name": "Aditi Malhotra", "email": "aditi.malhotra@email.com", "phone": "+91 98765 43215", "appliedJob": "UI/UX Designer", "stage": "Archived", "experience": 3, "location": "Mumbai", "skills": ["Figma", "Adobe XD", "Sketch"], "resumeScore": 73, "appliedDate": "2024-01-20" },
+    { "id": 7, "name": "Charu Dubey", "email": "charu.dubey@email.com", "phone": "+91 98765 43216", "appliedJob": "Backend Developer", "stage": "Archived", "experience": 2, "location": "Bangalore", "skills": ["Java", "Spring", "Microservices"], "resumeScore": 71, "appliedDate": "2024-01-14" },
+    { "id": 8, "name": "Rachna Sethi", "email": "rachna.sethi@email.com", "phone": "+91 98765 43217", "appliedJob": "Frontend Developer", "stage": "Hired", "experience": 3, "location": "Delhi", "skills": ["React", "JavaScript", "CSS"], "resumeScore": 87, "appliedDate": "2024-01-11" },
+    { "id": 9, "name": "Rohit Bansal", "email": "rohit.bansal@email.com", "phone": "+91 98765 43218", "appliedJob": "HR Specialist", "stage": "Hired", "experience": 3, "location": "Mumbai", "skills": ["Recruitment", "HR Policies", "Employee Relations"], "resumeScore": 85, "appliedDate": "2024-01-09" },
+    { "id": 10, "name": "Shubham Malhotra", "email": "shubham.malhotra@email.com", "phone": "+91 98765 43219", "appliedJob": "Operations Manager", "stage": "Offer", "experience": 5, "location": "Pune", "skills": ["Operations", "Process Improvement", "Team Management"], "resumeScore": 90, "appliedDate": "2024-01-13" }
+  ],
+  "assessments": [
+    {
+      "id": 1,
+      "title": "Job Specific Assessment",
+      "description": "Comprehensive assessment covering job-specific skills and competencies",
+      "duration": 45,
+      "totalQuestions": 10,
+      "passingScore": 70,
+      "status": "Active",
+      "category": "Technical",
+      "difficulty": "Intermediate",
+      "questions": [
+        {
+          "id": 1,
+          "type": "long-text",
+          "question": "Sample question 1 for Assessment 1",
+          "points": 10,
+          "minLength": 100
+        },
+        {
+          "id": 2,
+          "type": "numeric",
+          "question": "Sample question 2 for Assessment 1",
+          "points": 5,
+          "correctAnswer": 42
+        },
+        {
+          "id": 3,
+          "type": "single-choice",
+          "question": "Sample question 3 for Assessment 1",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 0
+        },
+        {
+          "id": 4,
+          "type": "single-choice",
+          "question": "Sample question 4 for Assessment 1",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 1
+        },
+        {
+          "id": 5,
+          "type": "single-choice",
+          "question": "Sample question 5 for Assessment 1",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 2
+        },
+        {
+          "id": 6,
+          "type": "numeric",
+          "question": "Sample question 6 for Assessment 1",
+          "points": 5,
+          "correctAnswer": 100
+        },
+        {
+          "id": 7,
+          "type": "numeric",
+          "question": "Sample question 7 for Assessment 1",
+          "points": 5,
+          "correctAnswer": 25
+        },
+        {
+          "id": 8,
+          "type": "single-choice",
+          "question": "Sample question 8 for Assessment 1",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 3
+        },
+        {
+          "id": 9,
+          "type": "single-choice",
+          "question": "Sample question 9 for Assessment 1",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 0
+        },
+        {
+          "id": 10,
+          "type": "file-upload",
+          "question": "Sample question 10 for Assessment 1",
+          "points": 10,
+          "acceptedFileTypes": [".pdf", ".doc", ".docx"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Job Specific Assessment",
+      "description": "Advanced assessment for specialized roles",
+      "duration": 60,
+      "totalQuestions": 10,
+      "passingScore": 75,
+      "status": "Active",
+      "category": "Technical",
+      "difficulty": "Advanced",
+      "questions": [
+        {
+          "id": 1,
+          "type": "file-upload",
+          "question": "Sample question 1 for Assessment 2",
+          "points": 15,
+          "acceptedFileTypes": [".pdf", ".zip"]
+        },
+        {
+          "id": 2,
+          "type": "short-text",
+          "question": "Sample question 2 for Assessment 2",
+          "points": 5,
+          "correctAnswer": "Expected answer"
+        },
+        {
+          "id": 3,
+          "type": "file-upload",
+          "question": "Sample question 3 for Assessment 2",
+          "points": 10,
+          "acceptedFileTypes": [".jpg", ".png", ".pdf"]
+        },
+        {
+          "id": 4,
+          "type": "multi-choice",
+          "question": "Sample question 4 for Assessment 2",
+          "points": 8,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswers": [0, 2]
+        },
+        {
+          "id": 5,
+          "type": "long-text",
+          "question": "Sample question 5 for Assessment 2",
+          "points": 12,
+          "minLength": 150
+        },
+        {
+          "id": 6,
+          "type": "short-text",
+          "question": "Sample question 6 for Assessment 2",
+          "points": 5,
+          "correctAnswer": "Short answer"
+        },
+        {
+          "id": 7,
+          "type": "long-text",
+          "question": "Sample question 7 for Assessment 2",
+          "points": 10,
+          "minLength": 200
+        },
+        {
+          "id": 8,
+          "type": "single-choice",
+          "question": "Sample question 8 for Assessment 2",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 1
+        },
+        {
+          "id": 9,
+          "type": "long-text",
+          "question": "Sample question 9 for Assessment 2",
+          "points": 15,
+          "minLength": 100
+        },
+        {
+          "id": 10,
+          "type": "multi-choice",
+          "question": "Sample question 10 for Assessment 2",
+          "points": 10,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswers": [1, 3]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Job Specific Assessment",
+      "description": "General competency assessment for all roles",
+      "duration": 30,
+      "totalQuestions": 10,
+      "passingScore": 65,
+      "status": "Active",
+      "category": "General",
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "id": 1,
+          "type": "single-choice",
+          "question": "Sample question 1 for Assessment 3",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 2
+        },
+        {
+          "id": 2,
+          "type": "numeric",
+          "question": "Sample question 2 for Assessment 3",
+          "points": 5,
+          "correctAnswer": 15
+        },
+        {
+          "id": 3,
+          "type": "file-upload",
+          "question": "Sample question 3 for Assessment 3",
+          "points": 10,
+          "acceptedFileTypes": [".pdf", ".doc"]
+        },
+        {
+          "id": 4,
+          "type": "long-text",
+          "question": "Sample question 4 for Assessment 3",
+          "points": 10,
+          "minLength": 80
+        },
+        {
+          "id": 5,
+          "type": "short-text",
+          "question": "Sample question 5 for Assessment 3",
+          "points": 5,
+          "correctAnswer": "Basic answer"
+        },
+        {
+          "id": 6,
+          "type": "single-choice",
+          "question": "Sample question 6 for Assessment 3",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 0
+        },
+        {
+          "id": 7,
+          "type": "numeric",
+          "question": "Sample question 7 for Assessment 3",
+          "points": 5,
+          "correctAnswer": 75
+        },
+        {
+          "id": 8,
+          "type": "single-choice",
+          "question": "Sample question 8 for Assessment 3",
+          "points": 5,
+          "options": ["Option A", "Option B", "Option C", "Option D"],
+          "correctAnswer": 3
+        },
+        {
+          "id": 9,
+          "type": "long-text",
+          "question": "Sample question 9 for Assessment 3",
+          "points": 10,
+          "minLength": 120
+        },
+        {
+          "id": 10,
+          "type": "long-text",
+          "question": "Sample question 10 for Assessment 3",
+          "points": 10,
+          "minLength": 100
+        }
+      ]
+    }
+  ]
+}

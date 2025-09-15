@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useToast } from '../contexts/ToastContext'
 
 const AssessmentsPage = () => {
   const [showCreateModal, setShowCreateModal] = useState(false)
@@ -10,6 +11,7 @@ const AssessmentsPage = () => {
   })
   const [errors, setErrors] = useState({})
   const navigate = useNavigate()
+  const { addToast } = useToast()
 
   // Sample assessments data
   const [assessments, setAssessments] = useState([
@@ -143,7 +145,7 @@ const AssessmentsPage = () => {
           <div
             key={assessment.id}
             className="assessment-card bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6 hover:shadow-md dark:hover:shadow-lg transition-all duration-200 cursor-pointer"
-            onClick={() => navigate(`/assessments/${assessment.id}`)}
+            onClick={() => navigate(`/admin/assessments/${assessment.id}`)}
           >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2">
@@ -179,10 +181,24 @@ const AssessmentsPage = () => {
 
             {/* Action Buttons */}
             <div className="flex space-x-2">
-              <button className="btn btn-sm btn-outline btn-primary flex-1 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation() // Prevent card click
+                  addToast(`Opening edit mode for "${assessment.title}"...`, 'info')
+                  navigate(`/admin/assessments/${assessment.id}/edit`)
+                }}
+                className="btn btn-sm btn-outline btn-primary flex-1 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white"
+              >
                 Edit
               </button>
-              <button className="btn btn-sm btn-outline btn-secondary flex-1 hover:bg-gray-600 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation() // Prevent card click
+                  addToast(`Opening preview for "${assessment.title}"...`, 'success')
+                  navigate(`/admin/assessments/${assessment.id}`)
+                }}
+                className="btn btn-sm btn-outline btn-secondary flex-1 hover:bg-gray-600 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
+              >
                 Preview
               </button>
             </div>

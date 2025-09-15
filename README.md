@@ -4,13 +4,21 @@ A complete hiring platform built with React (Vite) frontend and Node.js/Express 
 
 ## Features
 
-### Frontend (React + Vite)
+### Admin Portal
 - **Jobs Management**: Create, edit, archive jobs with drag-and-drop reordering
 - **Candidates Management**: Virtualized list (1000+ candidates) with search and filtering
 - **Kanban Board**: Drag-and-drop candidate stage management
 - **Assessments**: Dynamic assessment builder with multiple question types
 - **Real-time Updates**: Optimistic UI updates with error rollback
 - **Responsive Design**: Mobile-first design with TailwindCSS + DaisyUI
+
+### Candidate Portal
+- **Job Search**: Browse and filter available job opportunities
+- **Application Tracking**: Monitor application status and progress
+- **Profile Management**: Complete professional profile with experience and skills
+- **Dashboard**: Overview of applications, interviews, and profile activity
+- **Settings**: Customize notifications, privacy, and job preferences
+- **Theme Support**: Light/Dark/Auto theme switching
 
 ### Backend (Node.js + Express)
 - **Admin Authentication**: JWT-based auth with MongoDB
@@ -49,6 +57,12 @@ A complete hiring platform built with React (Vite) frontend and Node.js/Express 
 - Node.js 18+ 
 - MongoDB (local or cloud)
 - Git
+
+### Portal Access
+- **Admin Portal**: Navigate to `/admin` for the admin dashboard
+- **Candidate Portal**: Navigate to `/candidate` for the candidate portal
+- **Root Redirect**: Visiting `/` automatically redirects to `/admin`
+- **Quick Access**: Use the "Candidate Portal" link in the admin sidebar
 
 ### Installation
 

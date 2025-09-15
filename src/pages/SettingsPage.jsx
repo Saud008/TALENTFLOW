@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { useToast } from '../contexts/ToastContext'
+import { useUser } from '../contexts/UserContext'
 import { dataService } from '../services/dataService'
 
 const SettingsPage = () => {
@@ -16,12 +17,27 @@ const SettingsPage = () => {
   
   const { theme, effectiveTheme, systemTheme, changeTheme } = useTheme()
   const { addToast } = useToast()
+  const { user, updateEmail, updateName } = useUser()
 
   // Handle theme change with immediate feedback
   const handleThemeChange = (newTheme) => {
     changeTheme(newTheme)
     // Provide immediate feedback
     addToast(`Switched to ${newTheme === 'auto' ? 'Auto (System)' : newTheme === 'dark' ? 'Dark' : 'Light'} mode`, 'success')
+  }
+
+  // Handle email update
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value
+    updateEmail(newEmail)
+    addToast('Email address updated successfully!', 'success')
+  }
+
+  // Handle name update
+  const handleNameChange = (e) => {
+    const newName = e.target.value
+    updateName(newName)
+    addToast('Name updated successfully!', 'success')
   }
 
   useEffect(() => {
@@ -139,15 +155,13 @@ const SettingsPage = () => {
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Profile Information</h2>
           
           <div className="flex items-center space-x-4 mb-6">
-            <img
-              src={settings.profile.avatar}
-              alt={settings.profile.name}
-              className="w-16 h-16 rounded-full object-cover"
-            />
+            <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              {user.avatar}
+            </div>
             <div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-white">{settings.profile.name}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{settings.profile.email}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{settings.profile.role}</p>
+              <h3 className="text-lg font-medium text-gray-900 dark:text-white">{user.name}</h3>
+              <p className="text-gray-600 dark:text-gray-400">{user.email}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{user.role}</p>
             </div>
           </div>
 
@@ -158,9 +172,9 @@ const SettingsPage = () => {
               </label>
               <input
                 type="text"
-                value={settings.profile.name}
+                value={user.name}
+                onChange={handleNameChange}
                 className="input input-bordered w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                readOnly
               />
             </div>
 
@@ -170,9 +184,9 @@ const SettingsPage = () => {
               </label>
               <input
                 type="email"
-                value={settings.profile.email}
+                value={user.email}
+                onChange={handleEmailChange}
                 className="input input-bordered w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                readOnly
               />
             </div>
 
@@ -182,7 +196,7 @@ const SettingsPage = () => {
               </label>
               <input
                 type="text"
-                value={settings.profile.joinDate}
+                value={user.memberSince}
                 className="input input-bordered w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 readOnly
               />
@@ -246,7 +260,7 @@ const SettingsPage = () => {
                   </div>
                 </label>
                 
-                <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                {/* <label className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                   <input
                     type="radio"
                     name="theme"
@@ -266,7 +280,7 @@ const SettingsPage = () => {
                       </p>
                     </div>
                   </div>
-                </label>
+                </label> */}
               </div>
               
               {/* Theme Preview */}

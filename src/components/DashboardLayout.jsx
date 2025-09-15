@@ -1,24 +1,38 @@
 import { useState } from 'react'
 import { Outlet, useLocation, Link } from 'react-router-dom'
 import { useTheme } from '../contexts/ThemeContext'
+import { useUser } from '../contexts/UserContext'
+import { 
+  HiChartBar, 
+  HiBriefcase, 
+  HiUsers, 
+  HiDocumentText, 
+  HiCog,
+  HiUser,
+  HiChevronLeft,
+  HiChevronRight
+} from 'react-icons/hi'
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
   const { theme } = useTheme()
+  const { user } = useUser()
 
   const navigation = [
-    { name: 'Dashboard', href: '/', icon: '📊' },
-    { name: 'Jobs', href: '/jobs', icon: '💼' },
-    { name: 'Candidates', href: '/candidates', icon: '👥' },
-    { name: 'Assessments', href: '/assessments', icon: '📝' },
-    { name: 'Settings', href: '/settings', icon: '⚙️' },
+    { name: 'Dashboard', href: '/admin', icon: HiChartBar },
+    { name: 'Jobs', href: '/admin/jobs', icon: HiBriefcase },
+    { name: 'Candidates', href: '/admin/candidates', icon: HiUsers },
+    { name: 'Assessments', href: '/admin/assessments', icon: HiDocumentText },
+    { name: 'Settings', href: '/admin/settings', icon: HiCog },
   ]
 
+  const candidatePortalLink = { name: 'Candidate Portal', href: '/candidate', icon: HiUser, external: true }
+
   const isActive = (path) => {
-    if (path === '/') {
-      return location.pathname === '/'
+    if (path === '/admin') {
+      return location.pathname === '/admin'
     }
     return location.pathname.startsWith(path)
   }
@@ -43,9 +57,7 @@ const DashboardLayout = () => {
         <div className="p-6 border-b border-base-300 dark:border-gray-700">
           <div className="flex items-center">
             <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6" />
-              </svg>
+              <span className="text-white font-bold text-lg">TF</span>
             </div>
             {sidebarOpen && (
               <div className="ml-3">
@@ -68,22 +80,33 @@ const DashboardLayout = () => {
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
-              <span className="text-lg mr-3">{item.icon}</span>
+              <item.icon className="w-5 h-5 mr-3" />
               {sidebarOpen && <span>{item.name}</span>}
             </Link>
           ))}
+          
+          {/* Candidate Portal Link */}
+          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+            <Link
+              to={candidatePortalLink.href}
+              className="sidebar-nav-item flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300"
+            >
+              <candidatePortalLink.icon className="w-5 h-5 mr-3" />
+              {sidebarOpen && <span>{candidatePortalLink.name}</span>}
+            </Link>
+          </div>
         </nav>
 
         {/* User Profile Section */}
         <div className="p-4 border-t border-base-300 dark:border-gray-700">
           <div className="flex items-center">
             <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-semibold">
-              JD
+              {user.avatar}
             </div>
             {sidebarOpen && (
               <div className="ml-3 flex-1">
-                <p className="text-sm font-medium text-gray-900 dark:text-white">John Doe</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Admin</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-white">{user.name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{user.role}</p>
               </div>
             )}
           </div>
@@ -94,7 +117,7 @@ const DashboardLayout = () => {
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="hidden lg:block absolute top-4 right-4 p-2 rounded-lg bg-base-200 dark:bg-gray-700 hover:bg-base-300 dark:hover:bg-gray-600 transition-colors"
         >
-          {sidebarOpen ? '←' : '→'}
+          {sidebarOpen ? <HiChevronLeft className="w-4 h-4" /> : <HiChevronRight className="w-4 h-4" />}
         </button>
       </div>
 

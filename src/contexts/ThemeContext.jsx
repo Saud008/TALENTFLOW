@@ -92,7 +92,7 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ 
-      theme, 
+      theme: effectiveTheme, // Use effectiveTheme as the main theme value
       effectiveTheme, 
       systemTheme, 
       changeTheme 

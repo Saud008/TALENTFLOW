@@ -1,3 +1,9 @@
+// Import mock data
+import mockData from '../data/mockData.json'
+import candidatesData from '../data/candidatesData.json'
+import allCandidatesData from '../data/allCandidatesData.json'
+import complete1000Candidates from '../data/complete1000Candidates.json'
+
 // Data service for localStorage operations
 export const dataService = {
   // Generic localStorage operations
@@ -39,36 +45,7 @@ export const dataService = {
 
   // Jobs operations
   getJobs: () => {
-    return dataService.get('talentflow-jobs', [
-      {
-        id: 1,
-        title: 'Senior Frontend Developer',
-        department: 'Engineering',
-        status: 'Active',
-        createdDate: '2024-01-15'
-      },
-      {
-        id: 2,
-        title: 'Product Manager',
-        department: 'Product',
-        status: 'Active',
-        createdDate: '2024-01-10'
-      },
-      {
-        id: 3,
-        title: 'UX Designer',
-        department: 'Design',
-        status: 'Archived',
-        createdDate: '2024-01-05'
-      },
-      {
-        id: 4,
-        title: 'DevOps Engineer',
-        department: 'Engineering',
-        status: 'Active',
-        createdDate: '2024-01-20'
-      }
-    ])
+    return dataService.get('talentflow-jobs', mockData.jobs)
   },
 
   saveJobs: (jobs) => {
@@ -105,122 +82,174 @@ export const dataService = {
     return true
   },
 
+  // Archive/Unarchive job
+  archiveJob: (id) => {
+    return dataService.updateJob(id, { status: 'Archived' })
+  },
+
+  unarchiveJob: (id) => {
+    return dataService.updateJob(id, { status: 'Active' })
+  },
+
+  // Reorder jobs
+  reorderJobs: (reorderedJobs) => {
+    dataService.saveJobs(reorderedJobs)
+    return true
+  },
+
   // Candidates operations
-  getCandidates: () => {
-    return dataService.get('talentflow-candidates', [
-      {
-        id: 1,
-        name: 'Rohit Sharma',
-        email: 'rohit.sharma@email.com',
-        phone: '+91 98765 43210',
-        appliedJob: 'Senior Data Scientist',
-        stage: 'Interview',
-        avatar: dataService.generateAvatarUrl('Rohit Sharma'),
-        experience: '7 years',
-        location: 'Bengaluru, Karnataka, India',
-        resume: 'rohit_sharma_resume.pdf',
-        appliedDate: '2024-03-25',
-        lastContact: '2024-04-05'
+  // Generate complete 1000 candidates dataset
+  generateComplete1000Candidates: () => {
+    const names = [
+      "Dipti Chauhan", "Priya Raina", "Naman Sinha", "Chirag Deshmukh", "Swati Rajput",
+      "Aditi Malhotra", "Charu Dubey", "Rachna Sethi", "Rohit Bansal", "Shubham Malhotra",
+      "Varun Saxena", "Harshit Ghosh", "Pankaj Kaul", "Tanvi Sethi", "Priya Deshpande",
+      "Rachna Sinha", "Chirag Pathak", "Snehal Mehta", "Sanjana Verma", "Bhavna Jha",
+      "Shruti Deshpande", "Krish Deshmukh", "Yash Chopra", "Arjun Rawat", "Meera Ali",
+      "Aayushi Khatri", "Varun Chauhan", "Trisha Sethi", "Rachna Tiwari", "Parth Pathak",
+      "Anmol Khatri", "Krish Deshmukh", "Arjun Ghosh", "Pankaj Mishra", "Priya Pathak",
+      "Tanvi Kohli", "Aarav Bansal", "Kavya Ghosh", "Sneha Ali", "Trisha Menon",
+      "Ishita Khatri", "Aayushi Nair", "Arjun Bhatia", "Rahul Agrawal", "Manish Kaul",
+      "Rekha Yadav", "Siddharth Rajput", "Vivek Deshmukh", "Akanksha Sinha", "Varun Iyer"
+    ]
+    
+    const jobs = [
+      "Software Engineer", "Frontend Developer", "Backend Developer", "Data Analyst", "UI/UX Designer",
+      "Product Manager", "HR Specialist", "Mobile App Developer", "QA Tester", "Machine Learning Engineer",
+      "Content Writer", "Cybersecurity Analyst", "Cloud Engineer", "Business Analyst", "Sales Associate",
+      "Database Administrator", "Technical Support", "DevOps Engineer", "Marketing Executive", "Finance Analyst",
+      "Customer Success Manager", "Operations Manager", "Graphic Designer", "SEO Specialist", "Project Manager"
+    ]
+    
+    const stages = ["Screening", "Interview", "Offer", "Hired", "Archived"]
+    const locations = [
+      "Mumbai", "Delhi", "Bangalore", "Pune", "Hyderabad", "Chennai", "Kolkata", "Ahmedabad", 
+      "Jaipur", "Lucknow", "Kanpur", "Nagpur", "Indore", "Bhopal", "Visakhapatnam", "Patna",
+      "Vadodara", "Ghaziabad", "Ludhiana", "Agra", "Nashik", "Faridabad", "Meerut", "Rajkot"
+    ]
+    
+    const skillSets = [
+      ["JavaScript", "React", "Node.js"], ["Python", "Django", "PostgreSQL"], ["Java", "Spring", "MySQL"],
+      ["AWS", "Docker", "Kubernetes"], ["Machine Learning", "TensorFlow", "Python"], ["UI/UX", "Figma", "Adobe XD"],
+      ["Project Management", "Agile", "Scrum"], ["Sales", "CRM", "Communication"], ["HR", "Recruitment", "HRIS"],
+      ["Finance", "Excel", "SAP"], ["Marketing", "SEO", "Google Analytics"], ["DevOps", "CI/CD", "Jenkins"],
+      ["QA", "Selenium", "Testing"], ["Content Writing", "SEO", "WordPress"], ["Cybersecurity", "Penetration Testing"],
+      ["Cloud Computing", "AWS", "Azure"], ["Data Analysis", "SQL", "Tableau"], ["Mobile Development", "React Native", "Flutter"],
+      ["Backend Development", "Node.js", "MongoDB"], ["Frontend Development", "React", "Vue.js"]
+    ]
+
+    const candidates = []
+    
+    for (let i = 1; i <= 1000; i++) {
+      const nameIndex = (i - 1) % names.length
+      const baseName = names[nameIndex]
+      const name = i <= names.length ? baseName : `${baseName} ${Math.ceil(i / names.length)}`
+      
+      candidates.push({
+        id: i,
+        name: name,
+        email: `${name.toLowerCase().replace(/\s+/g, '.')}${i > names.length ? i : ''}@email.com`,
+        phone: `+91 98765 ${(43210 + i).toString().padStart(5, '0')}`,
+        appliedJob: jobs[(i - 1) % jobs.length],
+        stage: stages[(i - 1) % stages.length],
+        experience: Math.floor(Math.random() * 8) + 1,
+        location: locations[(i - 1) % locations.length],
+        skills: skillSets[(i - 1) % skillSets.length],
+        resumeScore: Math.floor(Math.random() * 30) + 70, // 70-99 range
+        appliedDate: new Date(2024, 0, Math.floor(Math.random() * 365)).toISOString().split('T')[0]
+      })
+    }
+    
+    return candidates
+  },
+
+  getCandidates: (page = 1, limit = 50, filters = {}) => {
+    // Generate all 1000 candidates
+    let allCandidates = dataService.generateComplete1000Candidates()
+    
+    // Add avatar URLs
+    allCandidates = allCandidates.map(candidate => ({
+      ...candidate,
+      avatar: dataService.generateAvatarUrl(candidate.name),
+      lastContact: candidate.appliedDate
+    }))
+    
+    // Apply filters
+    if (filters.stage) {
+      allCandidates = allCandidates.filter(candidate => candidate.stage === filters.stage)
+    }
+    if (filters.job) {
+      allCandidates = allCandidates.filter(candidate => candidate.appliedJob.toLowerCase().includes(filters.job.toLowerCase()))
+    }
+    if (filters.location) {
+      allCandidates = allCandidates.filter(candidate => candidate.location.toLowerCase().includes(filters.location.toLowerCase()))
+    }
+    
+    // Calculate pagination
+    const startIndex = (page - 1) * limit
+    const endIndex = startIndex + limit
+    const paginatedCandidates = allCandidates.slice(startIndex, endIndex)
+    
+    return {
+      candidates: paginatedCandidates,
+      totalCount: allCandidates.length,
+      currentPage: page,
+      totalPages: Math.ceil(allCandidates.length / limit),
+      hasNextPage: endIndex < allCandidates.length,
+      hasPrevPage: page > 1
+    }
+  },
+
+  // Get all candidates without pagination (for statistics)
+  getAllCandidates: () => {
+    let allCandidates = dataService.generateComplete1000Candidates()
+    return allCandidates.map(candidate => ({
+      ...candidate,
+      avatar: dataService.generateAvatarUrl(candidate.name),
+      lastContact: candidate.appliedDate
+    }))
+  },
+
+  // Get dashboard statistics
+  getStatistics: () => {
+    const jobs = dataService.getJobs()
+    const candidates = dataService.getAllCandidates()
+    const assessments = dataService.getAssessments()
+
+    const activeJobs = jobs.filter(job => job.status === 'Active').length
+    const totalJobs = jobs.length
+    const totalCandidates = candidates.length
+    const totalAssessments = assessments.length
+    
+    const candidatesByStage = candidates.reduce((acc, candidate) => {
+      acc[candidate.stage] = (acc[candidate.stage] || 0) + 1
+      return acc
+    }, {})
+
+    const jobsByStatus = jobs.reduce((acc, job) => {
+      acc[job.status] = (acc[job.status] || 0) + 1
+      return acc
+    }, {})
+
+    return {
+      jobs: {
+        total: totalJobs,
+        active: activeJobs,
+        archived: totalJobs - activeJobs,
+        byStatus: jobsByStatus
       },
-      {
-        id: 2,
-        name: 'Rajesh Agarwal',
-        email: 'rajesh.agarwal@email.com',
-        phone: '+1 (555) 234-5678',
-        appliedJob: 'Product Manager',
-        stage: 'Applied',
-        avatar: dataService.generateAvatarUrl('Rajesh Agarwal'),
-        experience: '7 years',
-        location: 'New York, NY',
-        resume: 'rajesh_agarwal_resume.pdf',
-        appliedDate: '2024-01-12',
-        lastContact: '2024-01-12'
+      candidates: {
+        total: totalCandidates,
+        byStage: candidatesByStage,
+        hired: candidatesByStage.Hired || 0,
+        inProgress: (candidatesByStage.Screening || 0) + (candidatesByStage.Interview || 0) + (candidatesByStage.Offer || 0)
       },
-      {
-        id: 3,
-        name: 'Karan Joshi',
-        email: 'karan.joshi@email.com',
-        phone: '+1 (555) 345-6789',
-        appliedJob: 'UX Designer',
-        stage: 'Hired',
-        avatar: dataService.generateAvatarUrl('Karan Joshi'),
-        experience: '4 years',
-        location: 'Austin, TX',
-        resume: 'karan_joshi_resume.pdf',
-        appliedDate: '2024-01-08',
-        lastContact: '2024-01-22'
-      },
-      {
-        id: 4,
-        name: 'Vikash Reddy',
-        email: 'vikash.reddy@email.com',
-        phone: '+1 (555) 456-7890',
-        appliedJob: 'DevOps Engineer',
-        stage: 'Interview',
-        avatar: dataService.generateAvatarUrl('Vikash Reddy'),
-        experience: '6 years',
-        location: 'Seattle, WA',
-        resume: 'vikash_reddy_resume.pdf',
-        appliedDate: '2024-01-18',
-        lastContact: '2024-01-21'
-      },
-      {
-        id: 5,
-        name: 'Priya Sharma',
-        email: 'priya.sharma@email.com',
-        phone: '+1 (555) 567-8901',
-        appliedJob: 'Senior Frontend Developer',
-        stage: 'Applied',
-        avatar: dataService.generateAvatarUrl('Priya Sharma'),
-        experience: '3 years',
-        location: 'Los Angeles, CA',
-        resume: 'priya_sharma_resume.pdf',
-        appliedDate: '2024-01-20',
-        lastContact: '2024-01-20'
-      },
-      {
-        id: 6,
-        name: 'Rohit Malhotra',
-        email: 'rohit.malhotra@email.com',
-        phone: '+1 (555) 678-9012',
-        appliedJob: 'Product Manager',
-        stage: 'Hired',
-        avatar: dataService.generateAvatarUrl('Rohit Malhotra'),
-        experience: '8 years',
-        location: 'Chicago, IL',
-        resume: 'rohit_malhotra_resume.pdf',
-        appliedDate: '2024-01-05',
-        lastContact: '2024-01-23'
-      },
-      {
-        id: 7,
-        name: 'Sneha Iyer',
-        email: 'sneha.iyer@email.com',
-        phone: '+1 (555) 789-0123',
-        appliedJob: 'HR Specialist',
-        stage: 'Interview',
-        avatar: dataService.generateAvatarUrl('Sneha Iyer'),
-        experience: '4 years',
-        location: 'Boston, MA',
-        resume: 'sneha_iyer_resume.pdf',
-        appliedDate: '2024-01-10',
-        lastContact: '2024-01-19'
-      },
-      {
-        id: 8,
-        name: 'Vikram Nair',
-        email: 'vikram.nair@email.com',
-        phone: '+1 (555) 890-1234',
-        appliedJob: 'Data Analyst',
-        stage: 'Applied',
-        avatar: dataService.generateAvatarUrl('Vikram Nair'),
-        experience: '5 years',
-        location: 'Denver, CO',
-        resume: 'vikram_nair_resume.pdf',
-        appliedDate: '2024-01-14',
-        lastContact: '2024-01-14'
+      assessments: {
+        total: totalAssessments,
+        active: assessments.filter(a => a.status === 'Active').length,
+        draft: assessments.filter(a => a.status === 'Draft').length
       }
-    ])
+    }
   },
 
   saveCandidates: (candidates) => {
@@ -284,83 +313,7 @@ export const dataService = {
 
   // Assessments operations
   getAssessments: () => {
-    return dataService.get('talentflow-assessments', [
-      {
-        id: 1,
-        title: 'Frontend Developer Assessment',
-        job: 'Senior Frontend Developer',
-        questionsCount: 15,
-        duration: '60 minutes',
-        difficulty: 'Intermediate',
-        status: 'Active',
-        createdDate: '2024-01-15',
-        lastModified: '2024-01-20',
-        description: 'This assessment evaluates candidates on their frontend development skills including React, JavaScript, CSS, and problem-solving abilities.',
-        skills: ['React', 'JavaScript', 'CSS', 'HTML', 'Problem Solving'],
-        questions: [
-          {
-            id: 1,
-            type: 'Multiple Choice',
-            question: 'What is the correct way to create a functional component in React?',
-            points: 5
-          },
-          {
-            id: 2,
-            type: 'Coding',
-            question: 'Write a function to reverse a string in JavaScript.',
-            points: 10
-          },
-          {
-            id: 3,
-            type: 'Multiple Choice',
-            question: 'Which CSS property is used to change the text color?',
-            points: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'Product Management Test',
-        job: 'Product Manager',
-        questionsCount: 20,
-        duration: '90 minutes',
-        difficulty: 'Intermediate',
-        status: 'Active',
-        createdDate: '2024-01-10',
-        lastModified: '2024-01-15',
-        description: 'Comprehensive test covering product strategy, user research, and market analysis.',
-        skills: ['Product Strategy', 'User Research', 'Market Analysis', 'Data Analysis'],
-        questions: []
-      },
-      {
-        id: 3,
-        title: 'UX Design Challenge',
-        job: 'UX Designer',
-        questionsCount: 12,
-        duration: '45 minutes',
-        difficulty: 'Easy',
-        status: 'Draft',
-        createdDate: '2024-01-05',
-        lastModified: '2024-01-05',
-        description: 'Design thinking and user experience evaluation.',
-        skills: ['Design Thinking', 'User Research', 'Prototyping', 'Usability Testing'],
-        questions: []
-      },
-      {
-        id: 4,
-        title: 'DevOps Technical Assessment',
-        job: 'DevOps Engineer',
-        questionsCount: 18,
-        duration: '75 minutes',
-        difficulty: 'Hard',
-        status: 'Active',
-        createdDate: '2024-01-20',
-        lastModified: '2024-01-22',
-        description: 'Technical assessment covering CI/CD, cloud platforms, and infrastructure.',
-        skills: ['CI/CD', 'AWS', 'Docker', 'Kubernetes', 'Monitoring'],
-        questions: []
-      }
-    ])
+    return dataService.get('talentflow-assessments', mockData.assessments)
   },
 
   saveAssessments: (assessments) => {
@@ -407,10 +360,10 @@ export const dataService = {
   getSettings: () => {
     return dataService.get('talentflow-settings', {
       profile: {
-        name: 'Saud Masud',
-        email: 'saud.masud@talentflow.com',
+        name: 'Saud Masaud',
+        email: 'saud.masaud@talentflow.com',
         role: 'Administrator',
-        avatar: dataService.generateAvatarUrl('Saud Masud'),
+        avatar: dataService.generateAvatarUrl('Saud Masaud'),
         joinDate: '2024-01-01'
       },
       preferences: {
