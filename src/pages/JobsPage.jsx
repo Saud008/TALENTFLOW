@@ -60,34 +60,34 @@ const SortableJobCard = ({ job, onEdit, onDelete, onArchive, onUnarchive }) => {
     <div
       ref={setNodeRef}
       style={style}
-      className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 mb-3 transition-all ${
+      className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3 sm:p-4 mb-3 transition-all ${
         isDragging ? 'shadow-lg border-blue-300 dark:border-blue-600 bg-blue-50 dark:bg-blue-900' : 'hover:shadow-md'
       }`}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-3 flex-1">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
+        <div className="flex items-center space-x-2 sm:space-x-3 flex-1">
           {/* Drag Handle */}
           <div
             {...attributes}
             {...listeners}
-            className="cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center border-2 border-dashed border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200"
+            className="cursor-grab active:cursor-grabbing text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-2 sm:p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center border-2 border-dashed border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 flex-shrink-0"
             title="Drag to reorder jobs"
             style={{ touchAction: 'none' }}
           >
-            <HiDotsVertical className="w-6 h-6" />
+            <HiDotsVertical className="w-4 h-4 sm:w-6 sm:h-6" />
           </div>
 
           {/* Job Info */}
-          <div className="flex-1">
-            <div className="flex items-center space-x-3 mb-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-2">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white truncate">
                 {job.title}
               </h3>
-              <span className={getStatusBadge(job.status)}>
+              <span className={`${getStatusBadge(job.status)} text-xs sm:text-sm`}>
                 {job.status}
               </span>
             </div>
-            <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center space-x-1">
                 <HiFolder className="w-4 h-4" />
                 <span>{job.department}</span>
@@ -105,42 +105,42 @@ const SortableJobCard = ({ job, onEdit, onDelete, onArchive, onUnarchive }) => {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1 sm:space-x-2">
           {/* Archive/Unarchive */}
           {job.status === 'Active' ? (
             <button
               onClick={() => onArchive(job.id)}
-              className="p-2 text-gray-400 hover:text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900 rounded"
+              className="p-1.5 sm:p-2 text-gray-400 hover:text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900 rounded"
               title="Archive Job"
             >
-              <HiArchive className="w-4 h-4" />
+              <HiArchive className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
           ) : (
             <button
               onClick={() => onUnarchive(job.id)}
-              className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900 rounded"
+              className="p-1.5 sm:p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 dark:hover:bg-green-900 rounded"
               title="Unarchive Job"
             >
-              <HiEye className="w-4 h-4" />
+              <HiEye className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
           )}
 
           {/* Edit */}
           <button
             onClick={() => onEdit(job)}
-            className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900 rounded"
+            className="p-1.5 sm:p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900 rounded"
             title="Edit Job"
           >
-            <HiPencil className="w-4 h-4" />
+            <HiPencil className="w-3 h-3 sm:w-4 sm:h-4" />
           </button>
 
           {/* Delete */}
           <button
             onClick={() => onDelete(job.id)}
-            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900 rounded"
+            className="p-1.5 sm:p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900 rounded"
             title="Delete Job"
           >
-            <HiTrash className="w-4 h-4" />
+            <HiTrash className="w-3 h-3 sm:w-4 sm:h-4" />
           </button>
         </div>
       </div>

@@ -187,7 +187,7 @@ const AssessmentsPage = () => {
                   addToast(`Opening edit mode for "${assessment.title}"...`, 'info')
                   navigate(`/admin/assessments/${assessment.id}/edit`)
                 }}
-                className="btn btn-sm btn-outline btn-primary flex-1 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white"
+                className="flex-1 px-4 py-2 text-sm font-medium text-green-600 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 hover:text-green-700 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800 dark:hover:bg-green-900/30 dark:hover:text-green-300 transition-all duration-200"
               >
                 Edit
               </button>
@@ -197,7 +197,7 @@ const AssessmentsPage = () => {
                   addToast(`Opening preview for "${assessment.title}"...`, 'success')
                   navigate(`/admin/assessments/${assessment.id}`)
                 }}
-                className="btn btn-sm btn-outline btn-secondary flex-1 hover:bg-gray-600 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"
+                className="flex-1 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800 dark:hover:bg-blue-900/30 dark:hover:text-blue-300 transition-all duration-200"
               >
                 Preview
               </button>

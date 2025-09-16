@@ -93,10 +93,10 @@ const AdminDashboard = () => {
       </div>
 
       {/* Top Bar with Department Info and Add Job Button */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6 mb-8" data-aos="fade-up" data-aos-delay="100">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 responsive-padding mb-6 sm:mb-8" data-aos="fade-up" data-aos-delay="100">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold responsive-text-lg">
               {teamInfo.department.charAt(0)}
             </div>
             <div>
@@ -135,8 +135,8 @@ const AdminDashboard = () => {
       {/* Statistics Dashboard */}
       {statistics && (
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Platform Overview</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          <h3 className="responsive-text-xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Platform Overview</h3>
+          <div className="grid-cols-responsive gap-4 sm:gap-6 mb-4 sm:mb-6">
             {/* Total Jobs */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6">
               <div className="flex items-center">
@@ -203,7 +203,7 @@ const AdminDashboard = () => {
           </div>
 
           {/* Detailed Breakdown */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid-cols-responsive-2 gap-4 sm:gap-6">
             {/* Jobs Breakdown */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6">
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Jobs by Status</h4>
@@ -235,8 +235,8 @@ const AdminDashboard = () => {
 
       {/* Employee Grid */}
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Team Members</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <h3 className="responsive-text-xl font-semibold text-gray-900 dark:text-white mb-4">Team Members</h3>
+        <div className="grid-cols-responsive gap-4 sm:gap-6">
           {employees.map((employee) => (
             <div key={employee.id} className="employee-card bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6 hover:shadow-md dark:hover:shadow-lg transition-all duration-200">
               <div className="flex flex-col items-center text-center">
@@ -258,8 +258,8 @@ const AdminDashboard = () => {
 
       {/* Add Job Modal */}
       {showAddJob && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl responsive-padding max-w-md w-full">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Add New Job</h3>
             <form className="space-y-4">
               <div>

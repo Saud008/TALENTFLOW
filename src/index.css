@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Responsive base styles */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
 /* Smooth theme transitions */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -30,6 +47,111 @@ html[data-theme="dark"] {
   color-scheme: dark;
 }
 
+/* Responsive layout utilities */
+@layer components {
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .grid-responsive {
+    @apply grid gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .grid-cols-responsive {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .grid-cols-responsive-2 {
+    @apply grid-cols-1 lg:grid-cols-2;
+  }
+
+  .grid-cols-responsive-3 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-cols-responsive-4 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .grid-cols-responsive-5 {
+    @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5;
+  }
+
+  /* Responsive card styles */
+  .responsive-card {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .responsive-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+
+     .responsive-text-xl {
+       @apply text-xl sm:text-2xl lg:text-3xl;
+     }
+
+     .responsive-text-3xl {
+       @apply text-2xl sm:text-3xl lg:text-4xl;
+     }
+
+     .space-responsive-md {
+       @apply space-y-4 sm:space-y-6;
+     }
+
+     .card-responsive {
+       @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 responsive-padding;
+     }
+
+  /* Responsive spacing */
+  .responsive-padding {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .responsive-margin {
+    @apply m-4 sm:m-6 lg:m-8;
+  }
+
+  .responsive-gap {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  /* Responsive buttons */
+  .btn-responsive {
+    @apply px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-medium rounded-lg transition-all duration-200;
+  }
+
+  .btn-responsive-sm {
+    @apply px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm font-medium rounded-md transition-all duration-200;
+  }
+
+  .btn-responsive-lg {
+    @apply px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-medium rounded-lg transition-all duration-200;
+  }
+
+  /* Responsive forms */
+  .form-responsive {
+    @apply space-y-4 sm:space-y-6;
+  }
+
+  .input-responsive {
+    @apply w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base border border-base-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+
+  /* Responsive tables */
+  .table-responsive {
+    @apply w-full overflow-x-auto;
+  }
+
+  .table-responsive th,
+  .table-responsive td {
+    @apply px-2 py-2 sm:px-4 sm:py-3 text-sm sm:text-base;
+  }
+}
+
 /* Custom styles for the dashboard */
 .sidebar-transition {
   transition: all 0.3s ease-in-out;
@@ -44,6 +166,7 @@ html[data-theme="dark"] {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
+/* Custom styles for the dashboard */
 .team-card {
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
   border: 1px solid #bbf7d0;

@@ -131,45 +131,46 @@ const AssessmentDetail = () => {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Active':
-        return 'badge badge-success'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
       case 'Draft':
-        return 'badge badge-warning'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400'
       case 'Archived':
-        return 'badge badge-neutral'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
       default:
-        return 'badge badge-neutral'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
     }
   }
 
   const getDifficultyBadge = (difficulty) => {
     switch (difficulty) {
       case 'Easy':
-        return 'badge badge-info'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400'
       case 'Intermediate':
-        return 'badge badge-warning'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400'
       case 'Hard':
-        return 'badge badge-error'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
       default:
-        return 'badge badge-neutral'
+        return 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
     }
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center space-x-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
           <button
             onClick={() => navigate('/admin/assessments')}
-            className="btn btn-ghost btn-sm"
+            className="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 flex items-center space-x-1"
           >
-            ← Back to Assessments
+            <span>←</span>
+            <span>Back to Assessments</span>
           </button>
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
               {isEditMode ? 'Edit Assessment' : 'Assessment Details'}
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-1">
               {isEditMode ? 'Modify assessment settings and questions' : 'View and manage assessment information'}
             </p>
           </div>
@@ -516,40 +517,40 @@ const AssessmentDetail = () => {
         {/* Sidebar */}
         <div className="lg:col-span-1 space-y-6">
           {/* Quick Actions */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
             <div className="space-y-3">
-              <button className="btn btn-outline btn-primary w-full">
+              <button className="w-full px-4 py-2 text-sm font-medium text-green-600 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 hover:text-green-700 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800 dark:hover:bg-green-900/30 dark:hover:text-green-300 transition-all duration-200">
                 Duplicate Assessment
               </button>
-              <button className="btn btn-outline btn-secondary w-full">
+              <button className="w-full px-4 py-2 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-700/50 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-200 transition-all duration-200">
                 Share Assessment
               </button>
-              <button className="btn btn-outline btn-warning w-full">
+              <button className="w-full px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border border-orange-200 rounded-lg hover:bg-orange-100 hover:text-orange-700 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800 dark:hover:bg-orange-900/30 dark:hover:text-orange-300 transition-all duration-200">
                 Archive Assessment
               </button>
             </div>
           </div>
 
           {/* Statistics */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-base-300 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Statistics</h3>
             <div className="space-y-4">
-              <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Total Attempts</span>
-                <span className="font-medium text-gray-900 dark:text-white">24</span>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700 dark:text-gray-300">Total Attempts</span>
+                <span className="text-base font-medium text-gray-900 dark:text-white">24</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Average Score</span>
-                <span className="font-medium text-gray-900 dark:text-white">78%</span>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700 dark:text-gray-300">Average Score</span>
+                <span className="text-base font-medium text-green-600 dark:text-green-400">78%</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Completion Rate</span>
-                <span className="font-medium text-gray-900 dark:text-white">92%</span>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700 dark:text-gray-300">Completion Rate</span>
+                <span className="text-base font-medium text-blue-600 dark:text-blue-400">92%</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Last Used</span>
-                <span className="font-medium text-gray-900 dark:text-white">2 days ago</span>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700 dark:text-gray-300">Last Used</span>
+                <span className="text-base font-medium text-gray-900 dark:text-white">2 days ago</span>
               </div>
             </div>
           </div>

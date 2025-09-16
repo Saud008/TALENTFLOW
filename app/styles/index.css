@@ -2,13 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Responsive base styles */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
 /* Custom styles for better UX */
 .kanban-column {
-  min-height: 400px;
+  min-height: 300px;
+}
+
+@media (min-width: 640px) {
+  .kanban-column {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .kanban-column {
+    min-height: 500px;
+  }
 }
 
 .virtualized-list {
-  height: 600px;
+  height: 400px;
+}
+
+@media (min-width: 640px) {
+  .virtualized-list {
+    height: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .virtualized-list {
+    height: 600px;
+  }
+}
+
+/* Responsive table styles */
+.responsive-table {
+  @apply w-full overflow-x-auto;
+}
+
+.responsive-table table {
+  @apply min-w-full;
+}
+
+.responsive-table th,
+.responsive-table td {
+  @apply px-2 py-2 sm:px-4 sm:py-3 text-sm sm:text-base;
+}
+
+/* Responsive form styles */
+.responsive-form {
+  @apply space-y-4 sm:space-y-6;
+}
+
+.responsive-form .form-group {
+  @apply space-y-2 sm:space-y-3;
+}
+
+.responsive-form label {
+  @apply text-sm sm:text-base font-medium;
+}
+
+.responsive-form input,
+.responsive-form textarea,
+.responsive-form select {
+  @apply w-full px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base;
+}
+
+/* Responsive button styles */
+.responsive-btn {
+  @apply px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base;
+}
+
+.responsive-btn-sm {
+  @apply px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm;
+}
+
+.responsive-btn-lg {
+  @apply px-4 py-3 sm:px-6 sm:py-4 text-base sm:text-lg;
 }
 
 /* Drag and drop styles */

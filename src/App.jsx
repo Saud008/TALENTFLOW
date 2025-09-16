@@ -26,13 +26,18 @@ import JobApplication from './pages/JobApplication'
 
 function App() {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false,
-      offset: 100,
-    })
+    // Initialize AOS with error handling
+    try {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+        offset: 100,
+      })
+    } catch (error) {
+      console.warn('AOS initialization failed:', error)
+    }
   }, [])
 
   return (

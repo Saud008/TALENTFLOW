@@ -70,16 +70,16 @@ const CandidateJobs = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="responsive-padding">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Find Your Next Job</h1>
-        <p className="text-gray-600 dark:text-gray-400">Discover opportunities that match your skills and interests.</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="responsive-text-3xl font-bold text-gray-900 dark:text-white mb-2">Find Your Next Job</h1>
+        <p className="responsive-text-sm text-gray-600 dark:text-gray-400">Discover opportunities that match your skills and interests.</p>
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="card-responsive mb-6 sm:mb-8">
+        <div className="grid-cols-responsive-4 gap-4">
           {/* Search */}
           <div className="md:col-span-1">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -159,9 +159,9 @@ const CandidateJobs = () => {
       </div>
 
       {/* Job Listings */}
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {filteredJobs.map((job) => (
-          <div key={job.id} className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 ${job.featured ? 'ring-2 ring-blue-500' : ''}`}>
+          <div key={job.id} className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 ${job.featured ? 'ring-2 ring-blue-500' : ''}`}>
             {job.featured && (
               <div className="flex items-center mb-4">
                 <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium">
@@ -170,20 +170,20 @@ const CandidateJobs = () => {
               </div>
             )}
             
-            <div className="flex items-start justify-between">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-4 lg:space-y-0">
               <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-2">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{job.title}</h3>
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">{job.title}</h3>
                   {job.remote && (
-                    <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 px-2 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 px-2 py-1 rounded-full text-xs font-medium self-start">
                       Remote
                     </span>
                   )}
                 </div>
                 
-                <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">{job.company}</p>
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-2">{job.company}</p>
                 
-                <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-3">
                   <span className="flex items-center">
                     <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -216,16 +216,16 @@ const CandidateJobs = () => {
                 </div>
               </div>
               
-              <div className="flex flex-col space-y-2 ml-6">
+              <div className="flex flex-row lg:flex-col space-x-2 lg:space-x-0 lg:space-y-2 lg:ml-6">
                 <button
                   onClick={() => handleApply(job)}
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 font-medium"
+                  className="flex-1 lg:flex-none px-4 py-2 sm:px-6 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-sm sm:text-base"
                 >
                   Apply Now
                 </button>
                 <button
                   onClick={() => handleSave(job)}
-                  className={`px-6 py-2 rounded-lg transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 font-medium ${
+                  className={`flex-1 lg:flex-none px-4 py-2 sm:px-6 sm:py-2 rounded-lg transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-sm sm:text-base ${
                     isJobSaved(job.id)
                       ? 'bg-green-100 border border-green-300 text-green-700 dark:bg-green-900 dark:border-green-600 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800'
                       : 'border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'

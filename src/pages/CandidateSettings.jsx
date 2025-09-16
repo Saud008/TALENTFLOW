@@ -51,14 +51,14 @@ const CandidateSettings = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="responsive-padding">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Settings</h1>
-        <p className="text-gray-600 dark:text-gray-400">Manage your account settings and preferences.</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="responsive-text-3xl font-bold text-gray-900 dark:text-white mb-2">Settings</h1>
+        <p className="responsive-text-sm text-gray-600 dark:text-gray-400">Manage your account settings and preferences.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid-cols-responsive-2 gap-6 sm:gap-8">
         {/* Settings Navigation */}
         <div className="lg:col-span-1">
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4">

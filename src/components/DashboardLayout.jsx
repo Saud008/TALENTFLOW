@@ -42,7 +42,7 @@ const DashboardLayout = () => {
       {/* Mobile Overlay */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
@@ -51,8 +51,8 @@ const DashboardLayout = () => {
       <div className={`${
         sidebarOpen ? 'w-64' : 'w-16'
       } ${
-        mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      } fixed lg:relative z-50 lg:z-auto sidebar-transition bg-white dark:bg-gray-800 shadow-lg flex flex-col h-full`}>
+        mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      } fixed md:relative z-50 md:z-auto sidebar-transition bg-white dark:bg-gray-800 shadow-lg flex flex-col h-full`}>
         {/* Logo Section */}
         <div className="p-6 border-b border-base-300 dark:border-gray-700">
           <div className="flex items-center">
